@@ -7,7 +7,7 @@
 set -euo pipefail
 IN="$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"; NAME="$2"; MATTE=1; [ "${3:-}" = "--no-matte" ] && MATTE=0
 HERE="$(cd "$(dirname "$0")" && pwd)"
-PROJ="${VFX_PROJECT:-$HOME/.claude/skills/video-effects}"
+PROJ="${VFX_PROJECT:-$(cd "$HERE/../../video-effects" && pwd)}" # the effects project shipped next to fx-common
 MODEL="${VFX_MODEL_DIR:-$HOME/.cache/video-effects}/u2net_human_seg.onnx"
 cd "$PROJ"; OUT="public/takes/$NAME"; mkdir -p "$OUT"
 

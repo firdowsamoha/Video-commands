@@ -1,12 +1,12 @@
 # Shared workflow for the single-effect commands
 
-Every effect command (`/orbit`, `/split`, ...) follows these steps. The command's own SKILL.md gives the effect id, its length, where it works best and which strings to rewrite. `PROJ` = `~/.claude/skills/video-effects` (the effects project, cloned there on first use). `COMMON` = the folder this file is in: `.claude/skills/fx-common` inside a repository, or `~/.claude/skills/fx-common` for a personal install.
+Every effect command (`/orbit`, `/split`, ...) follows these steps. The command's own SKILL.md gives the effect id, its length, where it works best and which strings to rewrite. `COMMON` = the folder this file is in, and `PROJ` = the `video-effects` folder next to it (the effects project, shipped with these commands). Inside a repository that is `.claude/skills/fx-common` and `.claude/skills/video-effects`; for a personal install, `~/.claude/skills/fx-common` and `~/.claude/skills/video-effects`.
 
 Frames are the unit everywhere: frame = seconds × 30.
 
 ## 0. Make sure the project is ready
 
-- If `PROJ/package.json` is missing: `git clone https://github.com/JesseEisenbart/video-effects-skill.git ~/.claude/skills/video-effects`.
+- `PROJ` ships with these commands, so nothing needs downloading. Only if `PROJ/package.json` is missing (an old install that copied the commands without it), copy the `video-effects` folder from https://github.com/firdowsamoha/Video-commands into the skills folder.
 - If `PROJ/node_modules` is missing, run `npm ci` in PROJ. Make sure `python3 -c "import numpy, PIL"` works (otherwise run `pip install numpy pillow`), and that `ffmpeg` is on PATH.
 - On Linux, Remotion should use the preinstalled Chromium if there is one. If `/opt/pw-browsers/chromium` exists, add `--browser-executable=/opt/pw-browsers/chromium` to every `npx remotion` command. On macOS or Windows, leave it out.
 
