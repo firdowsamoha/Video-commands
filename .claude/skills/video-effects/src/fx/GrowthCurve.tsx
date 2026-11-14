@@ -33,7 +33,7 @@ export const GrowthCurve: FC<FxProps> = ({ from }) => {
 	const fade = Easing.inOut(Easing.cubic)(progress(frame, 0, 9))
 	const t = Easing.inOut(Easing.quad)(progress(frame, DRAW_AT, DRAW_LEN))
 	const head = curve(t)
-	const shown = Math.max(1, Math.floor(1 + 9 * growth(t) + 0.001))
+	const shown = Math.round(100 * growth(t))
 	const card = pop(frame, 6)
 	const landed = pop(frame, DRAW_AT + DRAW_LEN)
 	const label = pop(frame, 8)
@@ -63,14 +63,14 @@ export const GrowthCurve: FC<FxProps> = ({ from }) => {
 		<AbsoluteFill style={{ opacity: 1 - fade }}><ARoll from={from} /></AbsoluteFill>
 		<Cutout from={from} />
 		{/* Axis caption, left, under the label pill. */}
-		<div style={{ position: 'absolute', left: 64, top: 300, ...materialize(label), fontFamily: themeFonts.body, fontWeight: 600, fontSize: 36, letterSpacing: '0', color: colors.navy500 }}>Reels shipped per week</div>
+		<div style={{ position: 'absolute', left: 64, top: 300, ...materialize(label), fontFamily: themeFonts.body, fontWeight: 600, fontSize: 36, letterSpacing: '0', color: colors.navy500 }}>Views per reel</div>
 		{/* Counter: a glass card, top right, below the label pill. Grows from its right edge, where the line ends. */}
 		<GlassBlur.Provider value={false}>
 			<GlassCard style={{ position: 'absolute', right: 52, top: 250, ...materialize(card), transformOrigin: 'right center' }} innerStyle={{ padding: '22px 32px 24px', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-				<div style={{ fontFamily: themeFonts.heading, fontSize: 132, lineHeight: 0.9, letterSpacing: '-0.03em', color: colors.navy, fontVariantNumeric: 'tabular-nums' }}>{shown}×</div>
-				<div style={{ fontFamily: themeFonts.body, fontWeight: 600, fontSize: 26, color: colors.navy500, marginTop: 10 }}>output</div>
+				<div style={{ fontFamily: themeFonts.heading, fontSize: 132, lineHeight: 0.9, letterSpacing: '-0.03em', color: colors.navy, fontVariantNumeric: 'tabular-nums' }}>{shown}%</div>
+				<div style={{ fontFamily: themeFonts.body, fontWeight: 600, fontSize: 26, color: colors.navy500, marginTop: 10 }}>growth</div>
 				<div style={{ height: 52 * landed, marginTop: 14 * landed, overflow: 'hidden', opacity: landed }}>
-					<div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '10px 18px', borderRadius: 999, background: '#DCFCE7', color: green, fontFamily: themeFonts.body, fontWeight: 600, fontSize: 26, transform: `scale(${0.9 + 0.1 * landed})`, transformOrigin: 'right center' }}>✓ With Claude</div>
+					<div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '10px 18px', borderRadius: 999, background: '#DCFCE7', color: green, fontFamily: themeFonts.body, fontWeight: 600, fontSize: 26, transform: `scale(${0.9 + 0.1 * landed})`, transformOrigin: 'right center' }}>✓ Finova</div>
 				</div>
 			</GlassCard>
 		</GlassBlur.Provider>

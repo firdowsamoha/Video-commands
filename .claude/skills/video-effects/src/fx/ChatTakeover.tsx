@@ -18,9 +18,9 @@ const VID = { x: 618, y: 724, w: 372 } // final attachment rect (9:16), frame co
 const MUTED = colors.navy500
 
 const STEPS = [
-	{ label: 'Cut the pauses', at: 46 },
-	{ label: 'Caption every word', at: 56 },
-	{ label: 'Add 21 effects', at: 66 },
+	{ label: 'Income & Expense Tracker', at: 46 },
+	{ label: 'Inventory System', at: 56 },
+	{ label: 'Dashboard Report', at: 66 },
 ]
 const TICK_DELAY = 8
 
@@ -58,19 +58,19 @@ export const ChatTakeover: FC<FxProps> = ({ from }) => {
 				{/* Header */}
 				<div style={{ height: 96, display: 'flex', alignItems: 'center', padding: '0 32px', borderBottom: `1px solid ${colors.navy200}`, gap: 16 }}>
 					<AssistantMark size={48} />
-					<span style={{ fontFamily: themeFonts.heading, fontSize: 36, fontWeight: 500, color: ink, letterSpacing: '-0.01em' }}>Claude</span>
-					<span style={{ marginLeft: 'auto', fontSize: 25, color: MUTED, fontWeight: 500 }}>Edit my reel</span>
+					<span style={{ fontFamily: themeFonts.heading, fontSize: 36, fontWeight: 500, color: ink, letterSpacing: '-0.01em' }}>Finova</span>
+					<span style={{ marginLeft: 'auto', fontSize: 25, color: MUTED, fontWeight: 500 }}>Business Systems</span>
 				</div>
 				{/* Prompt bubble, growing from its tail corner */}
 				<div style={{ position: 'absolute', right: 36, top: 130, width: 600, boxSizing: 'border-box', background: colors.blue50, border: `1px solid ${colors.blue100}`, color: ink, fontSize: 33, lineHeight: 1.35, padding: '20px 28px', borderRadius: '22px 22px 6px 22px', transform: `scale(${0.9 + 0.1 * bubble})`, transformOrigin: '100% 100%', opacity: Math.min(1, bubble * 1.4) }}>
-					Cut the dead air, caption every word, then add the effects.
+					I need a system to manage my accounts and stock.
 				</div>
 				{/* Reply column */}
 				<div style={{ position: 'absolute', left: 36, top: 360, width: 560 }}>
 					<div style={{ display: 'flex', alignItems: 'center', gap: 18, height: 60 }}>
 						<div style={{ transform: `scale(${0.6 + 0.4 * markIn})`, opacity: markIn, transformOrigin: '0 50%' }}><AssistantMark size={50} /></div>
 						{typing && <Dots frame={frame} />}
-						{frame >= 40 && <span style={{ fontFamily: themeFonts.heading, fontSize: 40, fontWeight: 500, color: ink, letterSpacing: '-0.015em', ...materialize(reply) }}>On it.</span>}
+						{frame >= 40 && <span style={{ fontFamily: themeFonts.heading, fontSize: 40, fontWeight: 500, color: ink, letterSpacing: '-0.015em', ...materialize(reply) }}>On it!</span>}
 					</div>
 					<div style={{ marginTop: 34, display: 'flex', flexDirection: 'column', gap: 32 }}>
 						{STEPS.map(step => {
@@ -86,7 +86,7 @@ export const ChatTakeover: FC<FxProps> = ({ from }) => {
 				</div>
 				{/* Composer */}
 				<div style={{ position: 'absolute', left: 24, right: 24, bottom: 24, height: 100, borderRadius: 16, background: colors.cloud, border: `1px solid ${colors.navy200}`, display: 'flex', alignItems: 'center', padding: '0 18px 0 30px' }}>
-					<span style={{ fontSize: 28, color: colors.navy400 }}>Reply to Claude…</span>
+					<span style={{ fontSize: 28, color: colors.navy400 }}>Message Finova…</span>
 					<div style={{ marginLeft: 'auto', width: 64, height: 64, borderRadius: 32, background: ink, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 						<svg width={28} height={28} viewBox="0 0 24 24"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5" fill="none" stroke="#fff" strokeWidth={2.8} strokeLinecap="round" strokeLinejoin="round" /></svg>
 					</div>
@@ -98,7 +98,7 @@ export const ChatTakeover: FC<FxProps> = ({ from }) => {
 			<ARoll from={from} />
 			<div style={{ position: 'absolute', left: 22 / s, bottom: 22 / s, background: 'rgba(15,23,42,0.72)', color: '#fff', fontSize: 21 / s, fontWeight: 600, letterSpacing: '0.01em', padding: `${7 / s}px ${14 / s}px`, borderRadius: 999, opacity: progress(frame, 14, 6), display: 'flex', alignItems: 'center', gap: 8 / s }}>
 				<svg width={15 / s} height={15 / s} viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="#fff" /></svg>
-				take-03.mp4 · 0:42
+				finova · demo
 			</div>
 		</div>
 	</AbsoluteFill>

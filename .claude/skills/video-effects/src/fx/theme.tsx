@@ -1,17 +1,18 @@
+import { brand } from '../palette'
 import { type CSSProperties, type ReactNode, createContext, useContext } from 'react'
 import { AbsoluteFill, spring, useCurrentFrame } from 'remotion'
 import { FX_FPS } from './shared'
 
 export const colors = {
-	navy: '#0F172A',
+	navy: brand.ink,
 	navy700: '#334155',
 	navy500: '#526078',
 	navy400: '#94A3B8',
 	navy200: '#E2E8F0',
 	navy100: '#F1F5F9',
-	blue: '#2563EB',
-	blue100: '#DBEAFE',
-	blue50: '#EFF6FF',
+	blue: brand.accent,
+	blue100: brand.light,
+	blue50: brand.soft,
 	mint: '#A7F3D0',
 	mintText: '#047857',
 	cloud: '#F8FAFC',
@@ -71,7 +72,7 @@ export const SPARKLE = 'M12 2C12.8 8 16 11.2 22 12 16 12.8 12.8 16 12 22 11.2 16
 
 /** A neutral assistant mark (a four-point sparkle on a rounded tile), used wherever a chat or tool needs an avatar. */
 export const AssistantMark = ({ size, dark = false, style }: { size: number; dark?: boolean; style?: CSSProperties }) => (
-	<div style={{ width: size, height: size, borderRadius: size * 0.24, flexShrink: 0, background: dark ? '#2A2927' : colors.navy, display: 'flex', alignItems: 'center', justifyContent: 'center', ...style }}>
-		<svg width={size * 0.62} height={size * 0.62} viewBox="0 0 24 24"><path d={SPARKLE} fill="#fff" /></svg>
+	<div style={{ width: size, height: size, borderRadius: size * 0.24, flexShrink: 0, background: dark ? brand.accentDeep : brand.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', ...style }}>
+		<svg width={size * 0.66} height={size * 0.66} viewBox="146 146 732 732"><g fill="#F8FAF7"><rect x={146} y={146} width={322} height={322} rx={16} /><path d="M556 146A322 322 0 0 1 878 468H556Z" /><rect x={146} y={556} width={322} height={322} rx={16} /><rect x={556} y={556} width={146} height={146} rx={14} /></g></svg>
 	</div>
 )

@@ -28,6 +28,12 @@ const GLYPHS = {
 	play: glyph(<path d="M18 14.5v19l16-9.5z" fill="currentColor" stroke="currentColor" strokeWidth={2.4} strokeLinejoin="round" />, colors.blue),
 	frame: glyph(<g fill="none" strokeWidth={3.4} strokeLinecap="round"><path d="M14 8v26h26M8 14h26v26" /></g>),
 	spark: glyph(<path d="M24 8l3.6 11.4L39 23l-11.4 3.6L24 38l-3.6-11.4L9 23l11.4-3.6z" fill="currentColor" stroke="none" />),
+	xl: glyph(<g><rect x={6} y={6} width={36} height={36} rx={8} fill="#107C41" stroke="none" /><text x={24} y={33} textAnchor="middle" fontFamily="Inter" fontWeight={800} fontSize={22} fill="#fff" stroke="none">X</text></g>),
+	bi: glyph(<g stroke="none"><rect x={10} y={22} width={7} height={18} rx={2} fill="#F2C811" /><rect x={20.5} y={14} width={7} height={26} rx={2} fill="#E8B10C" /><rect x={31} y={7} width={7} height={33} rx={2} fill="#C79500" /></g>),
+	sql: glyph(<g><ellipse cx={24} cy={12} rx={14} ry={5} fill="none" strokeWidth={3.2} /><path d="M10 12v24c0 2.8 6.3 5 14 5s14-2.2 14-5V12M10 24c0 2.8 6.3 5 14 5s14-2.2 14-5" fill="none" strokeWidth={3.2} /></g>, colors.blue),
+	py: glyph(<text x={24} y={32} textAnchor="middle" fontFamily="Inter" fontWeight={800} fontSize={20} fill="currentColor" stroke="none">Py</text>, '#3776AB'),
+	chart: glyph(<g fill="none" strokeWidth={3.6} strokeLinecap="round" strokeLinejoin="round"><path d="M8 40h32" /><path d="M10 32l9-9 7 6 12-14" /></g>, colors.blue),
+	table: glyph(<g fill="none" strokeWidth={3}><rect x={7} y={9} width={34} height={30} rx={5} /><path d="M7 19h34M7 29h34M19 9v30" /></g>),
 } as const
 type GlyphName = keyof typeof GLYPHS | 'assistant'
 
@@ -41,7 +47,7 @@ const ToolTile = ({ name, size = TILE }: { name: GlyphName, size?: number }) => 
 	return <div style={{ position: 'relative', width: size, height: size, borderRadius: r, background: '#fff', border: `1.5px solid ${colors.navy200}`, boxSizing: 'border-box', boxShadow: SHADOW }}>{body}</div>
 }
 
-const TILES: GlyphName[] = ['assistant', 'cut', 'cc', 'wave', 'type', 'play', 'frame', 'spark']
+const TILES: GlyphName[] = ['assistant', 'xl', 'bi', 'sql', 'py', 'chart', 'table', 'spark']
 
 // Ring angle over time: a quick spin-up that settles into a steady drift (never stops, so the hard cut out stays alive).
 const spin = (frame: number) => Math.PI * 2 * (0.32 * Easing.out(Easing.cubic)(progress(frame, 0, 26)) + frame / 150)

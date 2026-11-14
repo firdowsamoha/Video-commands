@@ -16,14 +16,14 @@ const SEAM = FX_H / 2
 const HEADROOM = 200 // how far above the top of the face box the seam lands: the hair clears it with a little air
 const INK = '#1F1E1C'
 const PAPER = '#F4EEE3'
-const TITLE = 'Lines Claude wrote'
-const ACCENT = 'per effect'
+const TITLE = 'Every system'
+const ACCENT = 'its own sheets'
 const BARS = [ // line counts of GlassWidgets, BrollOverlay, Orbit, Checklist and Split.tsx when this effect was added
-	{ label: 'widgets', value: 124 },
-	{ label: 'b-roll', value: 109 },
-	{ label: 'orbit', value: 95 },
-	{ label: 'list', value: 82 },
-	{ label: 'split', value: 78 },
+	{ label: 'store', value: 9 },
+	{ label: 'HR', value: 7 },
+	{ label: 'stock', value: 6 },
+	{ label: 'income', value: 5 },
+	{ label: 'coffee', value: 3 },
 ]
 const VALUE_SUFFIX = ''
 const AVG_LABEL = 'avg'

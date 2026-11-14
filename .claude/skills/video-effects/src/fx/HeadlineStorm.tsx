@@ -13,13 +13,13 @@ import { colors } from './theme'
 // SFX: 'hit' at 2 and 28 (the two big banners).
 type Banner = { at: number, tag: string, text: string, y: number, x: number, rot: number, from: -1 | 1, size: number, dark?: boolean, back?: boolean }
 const BANNERS: Banner[] = [
-	{ at: 2, tag: 'BREAKING', text: 'CLAUDE CUT THIS REEL', y: 300, x: 20, rot: -4, from: -1, size: 62 },
-	{ at: 8, tag: 'JUST IN', text: '21 EFFECTS. ZERO KEYFRAMES.', y: 450, x: 230, rot: 3, from: 1, size: 44, back: true },
-	{ at: 14, tag: 'LIVE', text: 'THE TIMELINE IS A PROMPT NOW', y: 640, x: 20, rot: -3, from: -1, size: 42, dark: true, back: true },
-	{ at: 21, tag: 'NEW', text: 'EDITED IN REACT', y: 1170, x: 20, rot: -3, from: -1, size: 56 },
-	{ at: 28, tag: 'BREAKING', text: 'SHIPPED BEFORE LUNCH', y: 1320, x: 130, rot: 4, from: 1, size: 52, dark: true },
-	{ at: 35, tag: 'UPDATE', text: 'ONE PROMPT. ONE REEL.', y: 1510, x: 20, rot: -3, from: -1, size: 54 },
-	{ at: 42, tag: 'JUST IN', text: 'SHIPPED FROM A TERMINAL', y: 1670, x: 210, rot: 3, from: 1, size: 46, dark: true },
+	{ at: 2, tag: 'BREAKING', text: 'ONE CLIP. 21 EFFECTS.', y: 300, x: 20, rot: -4, from: -1, size: 62 },
+	{ at: 8, tag: 'JUST IN', text: 'ZERO EDITING APPS.', y: 450, x: 230, rot: 3, from: 1, size: 44, back: true },
+	{ at: 14, tag: 'LIVE', text: 'TYPE A COMMAND, GET AN EFFECT', y: 640, x: 20, rot: -3, from: -1, size: 42, dark: true, back: true },
+	{ at: 21, tag: 'NEW', text: 'BUILT BY FINOVA', y: 1170, x: 20, rot: -3, from: -1, size: 56 },
+	{ at: 28, tag: 'BREAKING', text: 'POSTED BEFORE LUNCH', y: 1320, x: 130, rot: 4, from: 1, size: 52, dark: true },
+	{ at: 35, tag: 'UPDATE', text: 'ONE SKILL. EVERY EFFECT.', y: 1510, x: 20, rot: -3, from: -1, size: 54 },
+	{ at: 42, tag: 'JUST IN', text: 'COMMENT "SKILL" TO GET IT', y: 1670, x: 210, rot: 3, from: 1, size: 46, dark: true },
 ]
 
 // Slam: stiffness 900 (response ≈ 0.21 s), damping ratio 0.8.

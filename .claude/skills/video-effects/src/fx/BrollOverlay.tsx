@@ -1,3 +1,4 @@
+import { brand } from '../palette'
 import type { FC } from 'react'
 import { AbsoluteFill, interpolate, useCurrentFrame } from 'remotion'
 import { ARoll, CLAUDE_ORANGE, type FxEntry, type FxProps, FX_H, FX_W, fonts, fxSpring, progress } from './shared'
@@ -30,7 +31,7 @@ const Label = ({ y, text }: { y: number, text: string }) => <div style={{ positi
 
 // Fixed pseudo-random waveform bars.
 const BARS = Array.from({ length: 170 }, (_, i) => 0.25 + 0.75 * Math.abs(Math.sin(i * 1.7) * Math.cos(i * 0.43 + 1)))
-const CLAUDE_BG = '#1F1E1D' // dark terminal surface for the B-roll clip and the overlay card
+const CLAUDE_BG = brand.accentDeep // dark terminal surface for the B-roll clip and the overlay card
 
 export const BrollOverlay: FC<FxProps> = ({ from }) => {
 	const frame = useCurrentFrame()
@@ -56,7 +57,7 @@ export const BrollOverlay: FC<FxProps> = ({ from }) => {
 			<div style={{ position: 'absolute', left: 12, top: 12, width: WIN.w, height: WIN.h, borderRadius: 24, background: '#fff', border: `1px solid ${colors.navy200}`, overflow: 'hidden', boxSizing: 'border-box' }}>
 				<div style={{ position: 'absolute', left: 0, top: 0, right: 0, height: 64, display: 'flex', alignItems: 'center', gap: 12, padding: '0 22px', borderBottom: `1px solid ${colors.navy200}` }}>
 					{[0, 1, 2].map(c => <div key={c} style={{ width: 16, height: 16, borderRadius: 8, background: colors.navy200 }} />)}
-					<div style={{ marginLeft: 18, fontFamily: themeFonts.body, fontWeight: 600, fontSize: 24, color: colors.navy }}>my-reel-v3 <span style={{ color: colors.navy500, fontWeight: 500 }}>· edited by Claude</span></div>
+					<div style={{ marginLeft: 18, fontFamily: themeFonts.body, fontWeight: 600, fontSize: 24, color: colors.navy }}>Training Video <span style={{ color: colors.navy500, fontWeight: 500 }}>· Finova</span></div>
 					<div style={{ marginLeft: 'auto', fontFamily: themeFonts.body, fontWeight: 600, fontSize: 22, color: '#fff', background: colors.navy, borderRadius: 12, padding: '9px 20px' }}>Export</div>
 				</div>
 				<div style={{ position: 'absolute', left: 0, right: 0, top: PREVIEW.y - WIN.y, height: PREVIEW.h, background: colors.navy100 }} />
@@ -77,24 +78,24 @@ export const BrollOverlay: FC<FxProps> = ({ from }) => {
 			<Label y={TRACK.a1} text="A1" />
 			{/* Empty V2 lane, the talking-head clip and its audio. */}
 			<div style={{ position: 'absolute', left: TL_X, top: TRACK.v2, width: TL_R - TL_X, height: TRACK_H, borderRadius: 12, border: `2px dashed ${colors.navy200}`, boxSizing: 'border-box' }} />
-			<div style={{ position: 'absolute', left: TL_X - 40, top: TRACK.v1, width: TL_R - TL_X + 40, height: TRACK_H, borderRadius: 12, background: colors.blue, display: 'flex', alignItems: 'center', paddingLeft: 60, fontFamily: themeFonts.body, fontWeight: 600, fontSize: 24, color: '#fff', overflow: 'hidden' }}>Talking head · aroll.mp4</div>
+			<div style={{ position: 'absolute', left: TL_X - 40, top: TRACK.v1, width: TL_R - TL_X + 40, height: TRACK_H, borderRadius: 12, background: colors.blue, display: 'flex', alignItems: 'center', paddingLeft: 60, fontFamily: themeFonts.body, fontWeight: 600, fontSize: 24, color: '#fff', overflow: 'hidden' }}>Lesson 1 · Excel Basics</div>
 			<div style={{ position: 'absolute', left: TL_X - 40, top: TRACK.a1, width: TL_R - TL_X + 40, height: TRACK_H - 10, borderRadius: 12, background: '#ECFDF5', border: `1px solid ${colors.mint}`, display: 'flex', alignItems: 'center', gap: 3, padding: '0 10px', overflow: 'hidden', boxSizing: 'border-box' }}>
 				{BARS.map((b, i) => <div key={i} style={{ width: 4, flexShrink: 0, height: b * 50, borderRadius: 2, background: colors.mintText, opacity: 0.55 }} />)}
 			</div>
 			{/* The B-roll clip drops onto V2 (straight down into its lane, shadow tightening as it lands). */}
 			{frame >= DROP_AT && <div style={{ position: 'absolute', left: CLIP.x0, top: clipY, width: CLIP.x1 - CLIP.x0, height: TRACK_H, borderRadius: 12, background: CLAUDE_BG, boxShadow: `0 ${24 * (1 - drop) + 4}px ${50 * (1 - drop) + 10}px -${6 * drop}px rgba(15,23,42,${0.18 + 0.2 * (1 - drop)})`, transform: `scale(${1 + 0.04 * (1 - drop)})`, display: 'flex', alignItems: 'center', gap: 14, paddingLeft: 16, fontFamily: themeFonts.body, fontWeight: 600, fontSize: 24, color: '#F5F3EF', overflow: 'hidden', whiteSpace: 'nowrap', opacity: progress(frame, DROP_AT, 3) }}>
-				<AssistantMark size={44} dark style={{ outline: '2px solid #393735' }} />Claude Code · b-roll
+				<AssistantMark size={44} dark style={{ outline: `2px solid ${brand.accent}` }} />Pivot Tables
 			</div>}
 		</div>}
 		{/* The shot itself, shrinking into the preview monitor. */}
 		<div style={{ position: 'absolute', left: tx, top: ty, width: FX_W, height: FX_H, transform: `scale(${s})`, transformOrigin: '0 0', borderRadius: radius, overflow: 'hidden' }}>
 			<ARoll from={from} />
 			{/* B-roll overlay: a dark command card over the lower half of the shot once the playhead is inside the clip. */}
-			{brollIn > 0 && <div style={{ position: 'absolute', left: 60, right: 60, top: 1060, height: 660, borderRadius: 48, background: CLAUDE_BG, border: '3px solid #393735', boxShadow: '0 60px 120px -40px rgba(0,0,0,0.6)', transform: `translateY(${(1 - brollIn) * 60}px) scale(${0.96 + 0.04 * brollIn})`, opacity: Math.min(1, brollIn * 1.4), padding: 56, fontFamily: fonts.mono, fontSize: 46, lineHeight: 1.55, whiteSpace: 'nowrap', color: '#F5F3EF', boxSizing: 'border-box' }}>
-				<div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 40, fontFamily: themeFonts.heading, fontSize: 52 }}><AssistantMark size={72} dark style={{ outline: '2px solid #393735' }} />Claude Code</div>
-				<div><span style={{ color: CLAUDE_ORANGE }}>{'> '}</span>add b-roll at 00:12</div>
-				<div style={{ color: colors.mint }}>✓ placed clip on V2</div>
-				<div style={{ color: colors.mint }}>✓ synced to “edit”</div>
+			{brollIn > 0 && <div style={{ position: 'absolute', left: 60, right: 60, top: 1060, height: 660, borderRadius: 48, background: CLAUDE_BG, border: `3px solid ${brand.accent}`, boxShadow: '0 60px 120px -40px rgba(0,0,0,0.6)', transform: `translateY(${(1 - brollIn) * 60}px) scale(${0.96 + 0.04 * brollIn})`, opacity: Math.min(1, brollIn * 1.4), padding: 56, fontFamily: fonts.mono, fontSize: 46, lineHeight: 1.55, whiteSpace: 'nowrap', color: '#F5F3EF', boxSizing: 'border-box' }}>
+				<div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 40, fontFamily: themeFonts.heading, fontSize: 52 }}><AssistantMark size={72} dark style={{ outline: `2px solid ${brand.accent}` }} />Finova Training</div>
+				<div><span style={{ color: brand.bright }}>{'▶ '}</span>Lesson 2: Pivot Tables</div>
+				<div style={{ color: colors.mint }}>✓ Formulas & Functions</div>
+				<div style={{ color: colors.mint }}>✓ Dashboard Design</div>
 			</div>}
 		</div>
 		{/* Playhead over the timeline (drawn last so it crosses the clips). */}

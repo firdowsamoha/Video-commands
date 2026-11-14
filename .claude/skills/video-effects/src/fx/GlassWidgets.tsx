@@ -1,3 +1,4 @@
+import { AssistantMark } from './theme'
 import type { CSSProperties, FC, ReactNode } from 'react'
 import { AbsoluteFill, Easing, interpolateColors, useCurrentFrame } from 'remotion'
 import { ARoll, CLAUDE_ORANGE, Cutout, type FxEntry, type FxProps, FX_FPS, fonts, progress } from './shared'
@@ -17,11 +18,11 @@ const MUTED = 'rgba(20,20,19,0.55)'
 const GREEN = '#30D158'
 
 const COPY = {
-	count: { value: '21', label: 'effects', sub: 'in one skill' },
-	profile: { name: 'Your name', line: 'Your title',barLabel: 'Face tracked', barValue: '100%' },
-	chart: { title: 'Person mask', value: '1,714', unit: 'frames' },
-	ring: { label: 'Sound synced' },
-	render: { title: 'Rendering', file: 'glass-widgets.mp4', detail: '1080 × 1920 · 30 fps' },
+	count: { value: '4', label: 'systems', sub: 'ready to use' },
+	profile: { name: 'Finova', line: 'Business Intelligence',barLabel: 'Report', barValue: '100%' },
+	chart: { title: 'Services', value: '5', unit: 'we offer' },
+	ring: { label: 'Dashboard' },
+	render: { title: 'Your dashboard is ready', file: 'coffee-sales.xlsx', detail: 'Excel · Power BI' },
 }
 
 const GLASS: CSSProperties = {
@@ -90,7 +91,7 @@ export const GlassWidgets: FC<FxProps> = ({ from }) => {
 		</Widget>
 		<Widget frame={frame} at={4} x={600} y={250} w={424} h={196} phase={1.2}>
 			<div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-				<Avatar size={82} />
+				<AssistantMark size={82} style={{ borderRadius: 41 }} />
 				<div style={{ minWidth: 0 }}>
 					<div style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>{COPY.profile.name}</div>
 					<div style={{ fontSize: 24, color: MUTED, marginTop: 2, whiteSpace: 'nowrap' }}>{COPY.profile.line}</div>

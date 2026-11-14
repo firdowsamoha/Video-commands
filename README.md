@@ -1,6 +1,10 @@
 # video-commands
 
-21 slash commands for [Claude Code](https://claude.com/claude-code) that add a motion-graphics effect to your vertical (9:16) talking-head video and render it. Type a command, get an effect:
+21 slash commands for [Claude Code](https://claude.com/claude-code) that add a motion-graphics effect to your vertical (9:16) talking-head video and render it. Type a command, get an effect.
+
+<p align="center"><a href="docs/demo.mp4"><img src="docs/demo.gif" width="300" alt="One clip, 21 effects: each command typed in Claude Code, then played on the clip"></a></p>
+<p align="center"><a href="docs/demo.mp4"><b>▶ Watch the full demo: one clip, all 21 effects</b></a></p>
+
 
 ```
 /glass-widgets
@@ -52,6 +56,8 @@ Then open Claude Code, attach a vertical video, and type a command. Everything i
 | `/checklist` | A card with five steps going pending → done | a process, 5 tips |
 | `/split` | A bar chart slides into the top half, you below | comparing numbers |
 
+**The look:** the effects come in Finova's style, with a warm orange accent, English on-screen text and the Finova mark. To switch the accent to teal, set `PALETTE` to `'finova'` in `.claude/skills/video-effects/src/palette.ts`. Each command rewrites the on-screen text for your own topic.
+
 After the command, you can add a time (`at 0:05`) and the text you want on screen. Several in one message (`/frame-break, then /split at 0:10`) give you one video with all of them.
 
 ## How it works
@@ -60,6 +66,6 @@ Each command's settings are in `.claude/skills/<command>/SKILL.md`, and the shar
 
 ## Credits
 
-The effects come from [video-effects-skill](https://github.com/JesseEisenbart/video-effects-skill) by Jesse Eisenbart (MIT License), built with [Remotion](https://www.remotion.dev). A copy is included in `.claude/skills/video-effects/` with its original license, so these commands keep working on their own. These commands wrap each effect as its own slash command.
+The effects come from [video-effects-skill](https://github.com/JesseEisenbart/video-effects-skill) by Jesse Eisenbart (MIT License), built with [Remotion](https://www.remotion.dev). A copy is included in `.claude/skills/video-effects/` with its original license, restyled for Finova (colours, on-screen text, logo), so these commands keep working on their own. These commands wrap each effect as its own slash command.
 
 Remotion is free for individuals and small teams; larger companies need a company license (see [remotion.dev/license](https://www.remotion.dev/license)).

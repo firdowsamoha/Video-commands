@@ -1,3 +1,4 @@
+import { brand } from '../palette'
 import type { FC } from 'react'
 import { interpolate, useCurrentFrame } from 'remotion'
 import { ARoll, CLAUDE_ORANGE, FX_H, FX_W, type FxEntry, type FxProps, fxSpring, fonts, progress } from './shared'
@@ -33,16 +34,16 @@ const ScreenUi = ({ o }: { o: number }) => <div style={{ position: 'absolute', i
 	</div>
 	<div style={{ position: 'absolute', left: 30, top: 84, fontWeight: 800, fontSize: 30 }}>Feed</div>
 	<div style={{ position: 'absolute', right: 22, bottom: 190, display: 'flex', flexDirection: 'column', gap: 26 }}>
-		<Icon d={HEART} label="12.4k" />
-		<Icon d={BUBBLE} label="318" />
+		<Icon d={HEART} label="Like" />
+		<Icon d={BUBBLE} label="Message" />
 		<Icon d={SEND} label="Share" />
 	</div>
 	<div style={{ position: 'absolute', left: 28, bottom: 108, display: 'flex', alignItems: 'center', gap: 14 }}>
-		<div style={{ width: 52, height: 52, borderRadius: 26, border: '2px solid #fff', boxSizing: 'border-box', background: 'linear-gradient(135deg, #93C5FD, #2563EB)' }} />
-		<div style={{ fontWeight: 700, fontSize: 24 }}>yourhandle</div>
+		<div style={{ width: 52, height: 52, borderRadius: 26, border: '2px solid #fff', boxSizing: 'border-box', background: `linear-gradient(135deg, ${brand.light}, ${brand.accent})` }} />
+		<div style={{ fontWeight: 700, fontSize: 24 }}>finova</div>
 		<div style={{ padding: '6px 16px', borderRadius: 10, border: '2px solid rgba(255,255,255,0.85)', fontWeight: 700, fontSize: 20 }}>Follow</div>
 	</div>
-	<div style={{ position: 'absolute', left: 28, right: 110, bottom: 62, fontWeight: 500, fontSize: 22, opacity: 0.95 }}>Edited end to end with Claude <span style={{ color: CLAUDE_ORANGE }}>✦</span></div>
+	<div style={{ position: 'absolute', left: 28, right: 110, bottom: 62, fontWeight: 500, fontSize: 22, opacity: 0.95 }}>Excel Systems + Training Videos <span style={{ color: brand.bright }}>✦</span></div>
 	<div style={{ position: 'absolute', left: 0, right: 0, bottom: 34, height: 4, background: 'rgba(255,255,255,0.3)' }}><div style={{ width: '42%', height: '100%', background: '#fff' }} /></div>
 </div>
 

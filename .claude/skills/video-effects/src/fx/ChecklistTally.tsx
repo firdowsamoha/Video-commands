@@ -55,7 +55,7 @@ export const ChecklistTally: FC<FxProps> = () => {
 				<div style={{ fontFamily: themeFonts.heading, fontWeight: 500, fontSize: 250, lineHeight: 0.9, letterSpacing: '-0.04em', fontVariantNumeric: 'tabular-nums', color: frame >= DONE ? colors.blue : colors.navy }}>{n}</div>
 				<div style={{ fontFamily: themeFonts.heading, fontWeight: 500, fontSize: 64, letterSpacing: '-0.02em', color: colors.navy500 }}>/ {EFFECT_NAMES.length} effects</div>
 			</div>
-			<div style={{ fontFamily: fonts.ui, fontWeight: 500, fontSize: 40, letterSpacing: '-0.005em', color: colors.navy500, marginTop: 22 }}>Every one coded with Claude.</div>
+			<div style={{ fontFamily: fonts.ui, fontWeight: 500, fontSize: 40, letterSpacing: '-0.005em', color: colors.navy500, marginTop: 22 }}>All in one skill.</div>
 			<div style={{ marginTop: 34, height: 14, borderRadius: 7, background: colors.navy200, overflow: 'hidden' }}>
 				<div style={{ width: `${fill * 100}%`, height: '100%', borderRadius: 7, background: colors.blue }} />
 			</div>
